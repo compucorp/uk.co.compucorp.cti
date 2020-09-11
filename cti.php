@@ -134,30 +134,19 @@ function cti_civicrm_entityTypes(&$entityTypes) {
   _cti_civix_civicrm_entityTypes($entityTypes);
 }
 
-// --- Functions below this ship commented out. Uncomment as required. ---
-
-/**
- * Implements hook_civicrm_preProcess().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
- *
-function cti_civicrm_preProcess($formName, &$form) {
-
-} // */
-
 /**
  * Implements hook_civicrm_navigationMenu().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_navigationMenu
- *
+ */
 function cti_civicrm_navigationMenu(&$menu) {
-  _cti_civix_insert_navigation_menu($menu, 'Mailings', array(
-    'label' => E::ts('New subliminal message'),
-    'name' => 'mailing_subliminal_message',
-    'url' => 'civicrm/mailing/subliminal',
-    'permission' => 'access CiviMail',
+  _cti_civix_insert_navigation_menu($menu, 'Administer/CiviEvent', array(
+    'label' => E::ts('CTI Integration Settings'),
+    'name' => 'cti_integration_settings',
+    'url' => 'civicrm/admin/setting/preferences/event/cti',
+    'permission' => 'administer CiviCRM',
     'operator' => 'OR',
     'separator' => 0,
   ));
   _cti_civix_navigationMenu($menu);
-} // */
+}
