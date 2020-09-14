@@ -36,7 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           repo: compucorp/civicrm-core
-          version: 5.24.6
+          version: 5.28.3
           path: site/web/sites/all/modules/civicrm
 
       - uses: actions/checkout@v2
