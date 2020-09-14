@@ -115,7 +115,7 @@ class CRM_Cti_Hook_Post_SyncParticipant {
 
     // Check that a connection was made
     if (curl_error($connection)) {
-      //TODO: Log error if the connection was not made
+      $this->updateParticipantSyncStatus($httpStatus, $response);
     }
     curl_close($connection);
   }
@@ -126,12 +126,24 @@ class CRM_Cti_Hook_Post_SyncParticipant {
    * @throws CiviCRM_API3_Exception
    */
   private function updateParticipantSyncStatus($httpStatus, $response) {
+    switch ($httpStatus) {
+      case 200:
+      case 422:
+        $syncStatus = $httpStatus;
+        $response = $response['Message'];
+      break;
+      case 400:
+        $syncStatus = $httpStatus;
+        break;
+      default:
+        $syncStatus = 'other';
+    }
     civicrm_api3('Participant', 'create', [
       'id' => $this->participant['id'],
       'event_id' => $this->event['id'],
       'contact_id' => $this->contact['id'],
-      $this->syncStatusField => $httpStatus,
-      $this->apiResponseField => $response['Message'],
+      $this->syncStatusField => $syncStatus,
+      $this->apiResponseField => $response,
     ]);
   }
 
