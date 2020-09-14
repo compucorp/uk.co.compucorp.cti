@@ -28,7 +28,7 @@ class CRM_Cti_Test_Fabricator_Event extends BaseFabricator {
   }
 
   private static function getDefaultParams() {
-    $now = new DateTime(date("Y-m-d")." +7 days");
+    $now = new DateTime(date("Y-m-d") . " +7 days");
     $eventTypes = self::getEventTypes();
     return [
       'start_date' => $now->format('Y-m-d H:i:s'),

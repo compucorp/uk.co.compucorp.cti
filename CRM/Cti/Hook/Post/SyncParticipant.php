@@ -131,10 +131,12 @@ class CRM_Cti_Hook_Post_SyncParticipant {
       case 422:
         $syncStatus = $httpStatus;
         $response = $response['Message'];
-      break;
+        break;
+
       case 400:
         $syncStatus = $httpStatus;
         break;
+
       default:
         $syncStatus = 'other';
     }
