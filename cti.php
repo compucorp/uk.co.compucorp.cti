@@ -172,12 +172,9 @@ function cti_civicrm_post($op, $objectName, $objectId, &$objectRef) {
 }
 
 /**
- * @param $op
- * @param $objectName
  * @param $objectId
- * @param $objectRef
  */
 function cti_civicrm_post_callback($objectId) {
-  $participantHook = new CRM_Cti_Hook_Post_SyncParticipant($objectId);
+  $participantHook = new CRM_Cti_Hook_Post_CTIRestSync($objectId);
   $participantHook->sync();
 }

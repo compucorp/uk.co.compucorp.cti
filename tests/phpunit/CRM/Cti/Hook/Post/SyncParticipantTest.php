@@ -1,7 +1,7 @@
 <?php
 
 use CRM_Cti_Test_Fabricator_Event as EventFabricator;
-use CRM_Cti_Test_Fabricator_Participant as ParticiapntFabricator;
+use CRM_Cti_Test_Fabricator_Participant as ParticipantFabricator;
 use CRM_Cti_Test_Fabricator_Setting as SettingFabricator;
 
 require_once __DIR__ . '/../../../../BaseHeadlessTest.php';
@@ -28,13 +28,13 @@ class CRM_Cti_Hook_Post_SyncParticipantTest extends BaseHeadlessTest {
     ]);
 
     $syncStatusCustomField = $this->getSyncStatusCustomField();
-    $participant = ParticiapntFabricator::fabricate([
+    $participant = ParticipantFabricator::fabricate([
       'event_id' => $event['id'],
       $syncStatusCustomField => '',
     ]);
 
-    $postSyncParticipant = new CRM_Cti_Hook_Post_SyncParticipant($participant['id']);
-    $postSyncParticipant->sync('test');
+    $postSyncParticipant = new CRM_Cti_Test_Hook_Post_MockUpAPI($participant['id']);
+    $postSyncParticipant->sync();
 
     $updatedParticipant = civicrm_api3('Participant', 'getsingle', [
       'id' => $participant['id'],

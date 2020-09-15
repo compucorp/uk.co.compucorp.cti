@@ -1,11 +1,9 @@
 <?php
 
-use CRM_Cti_SettingsManager as SettingsManager;
-
 /**
  * Class CRM_Cti_Hook_Post_SyncParticipant
  */
-class CRM_Cti_Hook_Post_SyncParticipant {
+abstract class CRM_Cti_Hook_Post_SyncParticipant {
 
   /**
    * @var mixed
@@ -51,10 +49,9 @@ class CRM_Cti_Hook_Post_SyncParticipant {
   }
 
   /**
-   * @param string $mode
    * @throws CiviCRM_API3_Exception
    */
-  public function sync($mode = 'live') {
+  public function sync() {
     $ctiSessionID = $this->event[$this->ctiSessionField];
     if (empty($ctiSessionID)) {
       return;
@@ -78,54 +75,22 @@ class CRM_Cti_Hook_Post_SyncParticipant {
       'DisplayName' => $this->contact['display_name'],
     ];
 
-    if ($mode == 'live') {
-      $this->callCtiAPI($data);
-    }
-    else {
-      $this->mockAPIResponse($data);
-    }
+    $this->callAPI($data);
+
   }
 
   /**
    * @param $data
-   * @throws CiviCRM_API3_Exception
+   * @return mixed
    */
-  private function callCtiAPI($data) {
-    $settings = SettingsManager::getSettingsValue();
-    $header = [
-      'Accept:application/json',
-      'AUTHKEY:' . $settings[SettingsManager::AUTH_KEY],
-      'USERKEY:' . $settings[SettingsManager::USER_KEY],
-      'Content-Type:application/json',
-    ];;
-    set_time_limit(60);
-    $connection = curl_init();
-    $payload = json_encode($data);
-    curl_setopt_array($connection, [
-      CURLOPT_URL            => $settings[SettingsManager::API_URL],
-      CURLOPT_HTTPHEADER     => $header,
-      CURLOPT_POST          => TRUE,
-      CURLOPT_POSTFIELDS     => $payload,
-      CURLOPT_RETURNTRANSFER => TRUE,
-      CURLOPT_TIMEOUT        => 30,
-    ]);
-    $response = json_decode(curl_exec($connection), TRUE);
-    $httpStatus = curl_getinfo($connection, CURLINFO_HTTP_CODE);
-    $this->updateParticipantSyncStatus($httpStatus, $response);
-
-    // Check that a connection was made
-    if (curl_error($connection)) {
-      $this->updateParticipantSyncStatus($httpStatus, $response);
-    }
-    curl_close($connection);
-  }
+  abstract protected function callAPI($data);
 
   /**
    * @param $httpStatus
    * @param $response
    * @throws CiviCRM_API3_Exception
    */
-  private function updateParticipantSyncStatus($httpStatus, $response) {
+  protected function updateParticipantSyncStatus($httpStatus, $response) {
     switch ($httpStatus) {
       case 200:
       case 422:
@@ -194,18 +159,6 @@ class CRM_Cti_Hook_Post_SyncParticipant {
       'contact_id' => $contactId,
       'is_primary' => 1,
     ])['email'];
-  }
-
-  /**
-   * This method is used for mocking API response for testing only
-   *
-   * @param $status
-   * @throws CiviCRM_API3_Exception
-   */
-  private function mockAPIResponse () {
-    $status = 200;
-    $response = '{"Details": null,"Message":"Registration created","Reference": "4","ReferenceObject": null,"Severity": "Info"}';
-    $this->updateParticipantSyncStatus($status, json_decode($response, TRUE));
   }
 
 }
