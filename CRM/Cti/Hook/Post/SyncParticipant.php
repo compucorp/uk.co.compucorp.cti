@@ -75,15 +75,16 @@ abstract class CRM_Cti_Hook_Post_SyncParticipant {
       'DisplayName' => $this->contact['display_name'],
     ];
 
-    $this->callAPI($data);
+    $this->callAPI($data, $ctiSessionID);
 
   }
 
   /**
    * @param $data
+   * @param $ctiSessionID
    * @return mixed
    */
-  abstract protected function callAPI($data);
+  abstract protected function callAPI($data, $ctiSessionID);
 
   /**
    * @param $httpStatus

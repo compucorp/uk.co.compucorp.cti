@@ -24,7 +24,7 @@ class CRM_Cti_Hook_Post_SyncParticipantTest extends BaseHeadlessTest {
   public function testSync() {
     $ctiSessionIdFieldName = $this->getCTISessionFieldName();
     $event = EventFabricator::fabricate([
-      $ctiSessionIdFieldName => 'test_session_id',
+      $ctiSessionIdFieldName => '9332',
     ]);
 
     $syncStatusCustomField = $this->getSyncStatusCustomField();

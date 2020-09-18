@@ -16,9 +16,10 @@ class CRM_Cti_Test_Hook_Post_MockUpAPI extends CRM_Cti_Hook_Post_SyncParticipant
 
   /**
    * @param $data
+   * @param $sessionID
    * @throws CiviCRM_API3_Exception
    */
-  protected function callAPI($data) {
+  protected function callAPI($data, $sessionID) {
     $status = 200;
     $response = '{"Details": null,"Message":"Registration created","Reference": "4","ReferenceObject": null,"Severity": "Info"}';
     $this->updateParticipantSyncStatus($status, json_decode($response, TRUE));

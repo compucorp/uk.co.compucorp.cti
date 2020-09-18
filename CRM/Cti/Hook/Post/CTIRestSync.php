@@ -5,7 +5,7 @@ use CRM_Cti_SettingsManager as SettingsManager;
 /**
  * Class CRM_Cti_Hook_CTISync
  */
-class CRM_Cti_Hook_CTIRestSync extends CRM_Cti_Hook_Post_SyncParticipant {
+class CRM_Cti_Hook_Post_CTIRestSync extends CRM_Cti_Hook_Post_SyncParticipant {
 
   /**
    * CRM_Cti_Hook_CTISync constructor.
@@ -18,10 +18,12 @@ class CRM_Cti_Hook_CTIRestSync extends CRM_Cti_Hook_Post_SyncParticipant {
 
   /**
    * @param $data
+   * @param $sessionId
    * @throws CiviCRM_API3_Exception
    */
-  protected function callAPI($data) {
+  protected function callAPI($data, $sessionId) {
     $settings = SettingsManager::getSettingsValue();
+    $url = $settings[SettingsManager::API_URL] . '/' . $sessionId . '/registrant';
     $header = [
       'Accept:application/json',
       'AUTHKEY:' . $settings[SettingsManager::AUTH_KEY],
@@ -32,7 +34,7 @@ class CRM_Cti_Hook_CTIRestSync extends CRM_Cti_Hook_Post_SyncParticipant {
     $connection = curl_init();
     $payload = json_encode($data);
     curl_setopt_array($connection, [
-      CURLOPT_URL            => $settings[SettingsManager::API_URL],
+      CURLOPT_URL            => $url,
       CURLOPT_HTTPHEADER     => $header,
       CURLOPT_POST          => TRUE,
       CURLOPT_POSTFIELDS     => $payload,
