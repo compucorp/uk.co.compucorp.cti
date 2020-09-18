@@ -22,6 +22,15 @@ class CRM_Cti_Hook_Post_CTIRestSync extends CRM_Cti_Hook_Post_SyncParticipant {
    * @throws CiviCRM_API3_Exception
    */
   protected function callAPI($data, $sessionId) {
+    $this->callRemoteCTIAPI($data, $sessionId);
+  }
+
+  /**
+   * @param $data
+   * @param $sessionId
+   * @throws CiviCRM_API3_Exception
+   */
+  private function callRemoteCTIAPI($data, $sessionId) {
     $settings = SettingsManager::getSettingsValue();
     $url = $settings[SettingsManager::API_URL] . '/' . $sessionId . '/registrant';
     $header = [
