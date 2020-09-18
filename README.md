@@ -1,44 +1,20 @@
-# uk.co.compucorp.cti
+# CiviCRM CTI Event Platform Integration.
 
-![Screenshot](/images/screenshot.png)
+## What is CiviCRM CTI Event Platform Integration ?
+The CiviCRM CTI Event Platform Integration allows CiviCRM to sync participant record with CTI Platform when a Participant has been registered to the event.
 
-(*FIXME: In one or two paragraphs, describe what the extension does and why one would download it. *)
+The Extension support registration using CiviCRM Event Registration Page and Webform Registration.
 
-The extension is licensed under [AGPL-3.0](LICENSE.txt).
 
-## Requirements
+### Installation
+If this is the first time you use an CiviCRM extension,  please see [Here](http://wiki.civicrm.org/confluence/display/CRMDOC/Extensions "CiviCRM Extensions Installation") for full instructions and information on how to set and configure extensions.
 
-* PHP v5.6+
-* CiviCRM (*FIXME: Version number*)
+You can get the latest release of CasesSuiteSampleData from [Github repository release page](https://github.com/compucorp/uk.co.compucorp.casessuitesampledata/releases).
 
-## Installation (Web UI)
+Contact info@compucorp.co.uk if you need any assistance with installation.
 
-This extension has not yet been published for installation via the web UI.
 
-## Installation (CLI, Zip)
+## Support
+Please contact the following email if you have any question: <hello@compucorp.co.uk>
 
-Sysadmins and developers may download the `.zip` file for this extension and
-install it with the command-line tool [cv](https://github.com/civicrm/cv).
-
-```bash
-cd <extension-dir>
-cv dl uk.co.compucorp.cti@https://github.com/FIXME/uk.co.compucorp.cti/archive/master.zip
-```
-
-## Installation (CLI, Git)
-
-Sysadmins and developers may clone the [Git](https://en.wikipedia.org/wiki/Git) repo for this extension and
-install it with the command-line tool [cv](https://github.com/civicrm/cv).
-
-```bash
-git clone https://github.com/FIXME/uk.co.compucorp.cti.git
-cv en cti
-```
-
-## Usage
-
-(* FIXME: Where would a new user navigate to get started? What changes would they see? *)
-
-## Known Issues
-
-(* FIXME *)
+Paid support for this extension is available, please contact us either via Github or at <hello@compucorp.co.uk>
