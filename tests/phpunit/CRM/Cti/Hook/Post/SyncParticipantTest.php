@@ -30,7 +30,7 @@ class CRM_Cti_Hook_Post_SyncParticipantTest extends BaseHeadlessTest {
     $syncStatusCustomField = $this->getSyncStatusCustomField();
     $participant = ParticipantFabricator::fabricate([
       'event_id' => $event['id'],
-      $syncStatusCustomField => '',
+      $syncStatusCustomField => 'update',
     ]);
 
     $postSyncParticipant = new CRM_Cti_Test_Hook_Post_MockUpAPI($participant['id']);
