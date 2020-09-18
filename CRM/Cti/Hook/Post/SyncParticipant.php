@@ -95,10 +95,6 @@ abstract class CRM_Cti_Hook_Post_SyncParticipant {
     switch ($httpStatus) {
       case 200:
       case 422:
-        $syncStatus = $httpStatus;
-        $response = $response['Message'];
-        break;
-
       case 400:
         $syncStatus = $httpStatus;
         break;

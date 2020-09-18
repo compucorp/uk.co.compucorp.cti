@@ -50,7 +50,7 @@ class CRM_Cti_Hook_Post_CTIRestSync extends CRM_Cti_Hook_Post_SyncParticipant {
       CURLOPT_RETURNTRANSFER => TRUE,
       CURLOPT_TIMEOUT        => 30,
     ]);
-    $response = json_decode(curl_exec($connection), TRUE);
+    $response = curl_exec($connection);
     $httpStatus = curl_getinfo($connection, CURLINFO_HTTP_CODE);
     $this->updateParticipantSyncStatus($httpStatus, $response);
     curl_close($connection);
