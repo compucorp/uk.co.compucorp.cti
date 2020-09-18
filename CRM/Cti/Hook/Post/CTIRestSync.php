@@ -53,11 +53,6 @@ class CRM_Cti_Hook_Post_CTIRestSync extends CRM_Cti_Hook_Post_SyncParticipant {
     $response = json_decode(curl_exec($connection), TRUE);
     $httpStatus = curl_getinfo($connection, CURLINFO_HTTP_CODE);
     $this->updateParticipantSyncStatus($httpStatus, $response);
-
-    // Check that a connection was made
-    if (curl_error($connection)) {
-      $this->updateParticipantSyncStatus($httpStatus, $response);
-    }
     curl_close($connection);
   }
 
