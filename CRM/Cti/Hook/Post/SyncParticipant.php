@@ -62,7 +62,7 @@ abstract class CRM_Cti_Hook_Post_SyncParticipant {
     }
 
     $syncStatus = $this->participant[$this->syncStatusField];
-    if ($syncStatus != 'update' && !is_null($syncStatus)) {
+    if ($syncStatus != 'update' && $syncStatus != '') {
       return;
     }
 
