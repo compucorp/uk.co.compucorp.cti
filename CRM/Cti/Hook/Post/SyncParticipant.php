@@ -56,12 +56,16 @@ abstract class CRM_Cti_Hook_Post_SyncParticipant {
     if (empty($ctiSessionID)) {
       return;
     }
-
+    //When the participant is registered via Webform or online registration form
+    //the custom fields will not passed if the fields are not created in a profile / forms
+    //therefore, custom fields will not exist here so $syncStatus should be assigned as empty
     if (!array_key_exists($this->syncStatusField, $this->participant)) {
-      return;
+      $syncStatus = '';
+    }
+    else {
+      $syncStatus = $this->participant[$this->syncStatusField];
     }
 
-    $syncStatus = $this->participant[$this->syncStatusField];
     if ($syncStatus != 'update' && $syncStatus != '') {
       return;
     }
