@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+
+<CustomData>
+  <CustomGroups>
+    <CustomGroup>
+      <name>cti_events_platform_integration_event</name>
+      <title>CTI Events Platform Integration (Event)</title>
+      <extends>Event</extends>
+      <style>Inline</style>
+      <collapse_display>1</collapse_display>
+      <help_pre></help_pre>
+      <help_post></help_post>
+      <is_active>1</is_active>
+      <table_name>civicrm_value_cti_integration_event</table_name>
+      <is_multiple>0</is_multiple>
+      <collapse_adv_display>0</collapse_adv_display>
+      <created_date>2020-09-10 04:28:55</created_date>
+      <is_reserved>0</is_reserved>
+      <is_public>0</is_public>
+      <icon></icon>
+    </CustomGroup>
+    <CustomGroup>
+      <name>cti_events_platform_integration_participant</name>
+      <title>CTI Events Platform Integration (Participant)</title>
+      <extends>Participant</extends>
+      <style>Inline</style>
+      <collapse_display>1</collapse_display>
+      <help_pre></help_pre>
+      <help_post></help_post>
+      <is_active>1</is_active>
+      <table_name>civicrm_value_cti_integration_participant</table_name>
+      <is_multiple>0</is_multiple>
+      <collapse_adv_display>0</collapse_adv_display>
+      <created_date>2020-09-10 04:30:31</created_date>
+      <is_reserved>0</is_reserved>
+      <is_public>0</is_public>
+      <icon></icon>
+    </CustomGroup>
+  </CustomGroups>
+  <CustomFields>
+    <CustomField>
+      <name>cti_session_id</name>
+      <label>CTI Session ID</label>
+      <data_type>String</data_type>
+      <html_type>Text</html_type>
+      <is_searchable>1</is_searchable>
+      <is_search_range>0</is_search_range>
+      <weight>1</weight>
+      <is_active>1</is_active>
+      <text_length>255</text_length>
+      <note_columns>60</note_columns>
+      <note_rows>4</note_rows>
+      <column_name>cti_session_id</column_name>
+      <in_selector>0</in_selector>
+      <custom_group_name>cti_events_platform_integration_event</custom_group_name>
+    </CustomField>
+    <CustomField>
+      <name>sync_status</name>
+      <label>Sync status</label>
+      <data_type>String</data_type>
+      <html_type>Select</html_type>
+      <is_searchable>1</is_searchable>
+      <is_search_range>0</is_search_range>
+      <weight>1</weight>
+      <is_active>1</is_active>
+      <text_length>255</text_length>
+      <note_columns>60</note_columns>
+      <note_rows>4</note_rows>
+      <column_name>sync_status</column_name>
+      <in_selector>0</in_selector>
+      <option_group_name>cti_integration_sync_status</option_group_name>
+      <custom_group_name>cti_events_platform_integration_participant</custom_group_name>
+    </CustomField>
+    <CustomField>
+      <name>api_response</name>
+      <label>API response</label>
+      <data_type>Memo</data_type>
+      <html_type>TextArea</html_type>
+      <is_search_range>0</is_search_range>
+      <weight>2</weight>
+      <attributes>rows=4, cols=60</attributes>
+      <is_active>1</is_active>
+      <is_view>1</is_view>
+      <note_columns>60</note_columns>
+      <note_rows>4</note_rows>
+      <column_name>api_response</column_name>
+      <in_selector>0</in_selector>
+      <custom_group_name>cti_events_platform_integration_participant</custom_group_name>
+    </CustomField>
+  </CustomFields>
+  <OptionGroups>
+    <OptionGroup>
+      <name>cti_integration_sync_status</name>
+      <title>Sync status</title>
+      <data_type>String</data_type>
+      <is_reserved>0</is_reserved>
+      <is_active>1</is_active>
+      <is_locked>0</is_locked>
+    </OptionGroup>
+  </OptionGroups>
+  <OptionValues>
+    <OptionValue>
+      <label>Update</label>
+      <value>update</value>
+      <name>update</name>
+      <filter>0</filter>
+      <is_default>0</is_default>
+      <weight>2</weight>
+      <is_optgroup>0</is_optgroup>
+      <is_reserved>0</is_reserved>
+      <is_active>1</is_active>
+      <option_group_name>cti_integration_sync_status</option_group_name>
+    </OptionValue>
+    <OptionValue>
+      <label>200 - Success</label>
+      <value>200</value>
+      <name>200_success</name>
+      <filter>0</filter>
+      <is_default>0</is_default>
+      <weight>3</weight>
+      <is_optgroup>0</is_optgroup>
+      <is_reserved>0</is_reserved>
+      <is_active>1</is_active>
+      <option_group_name>cti_integration_sync_status</option_group_name>
+    </OptionValue>
+    <OptionValue>
+      <label>422 - Error (Badge number duplicated for a person already registered)</label>
+      <value>422</value>
+      <name>422_error_badge_number_duplicated</name>
+      <filter>0</filter>
+      <is_default>0</is_default>
+      <weight>4</weight>
+      <is_optgroup>0</is_optgroup>
+      <is_reserved>0</is_reserved>
+      <is_active>1</is_active>
+      <option_group_name>cti_integration_sync_status</option_group_name>
+    </OptionValue>
+    <OptionValue>
+      <label>400 - Body of request has some error in it</label>
+      <value>400</value>
+      <name>400_body_of_request_has_some_error</name>
+      <filter>0</filter>
+      <is_default>0</is_default>
+      <weight>5</weight>
+      <is_optgroup>0</is_optgroup>
+      <is_reserved>0</is_reserved>
+      <is_active>1</is_active>
+      <option_group_name>cti_integration_sync_status</option_group_name>
+    </OptionValue>
+    <OptionValue>
+      <label>Other error</label>
+      <value>other</value>
+      <name>other_error</name>
+      <filter>0</filter>
+      <is_default>0</is_default>
+      <weight>5</weight>
+      <is_optgroup>0</is_optgroup>
+      <is_reserved>0</is_reserved>
+      <is_active>1</is_active>
+      <option_group_name>cti_integration_sync_status</option_group_name>
+    </OptionValue>
+  </OptionValues>
+</CustomData>

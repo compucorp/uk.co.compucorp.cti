@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<extension key="uk.co.compucorp.cti" type="module">
+  <file>cti</file>
+  <name>FIXME</name>
+  <description>CiviCRM CTI Event Platform Integration</description>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>Compucorp Ltd.</author>
+    <email>hello@compucorp.co.uk</email>
+  </maintainer>
+  <urls>
+    <url desc="Main Extension Page">https://github.com/compucorp/uk.co.compucorp.cti</url>
+    <url desc="Documentation">https://github.com/compucorp/uk.co.compucorp.cti/blob/master/readme.md</url>
+    <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
+  </urls>
+  <releaseDate>2020-09-18</releaseDate>
+  <version>1.0</version>
+  <develStage>stable</develStage>
+  <compatibility>
+    <ver>5.0</ver>
+  </compatibility>
+  <comments></comments>
+  <civix>
+    <namespace>CRM/Cti</namespace>
+  </civix>
+</extension>
